@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileTreeItem extends TreeItem<Path> {
 
@@ -40,13 +41,18 @@ public class FileTreeItem extends TreeItem<Path> {
 
     private void initFileTreeItems() {
         try {
-            for (var path : Files.list(getValue()).collect(Collectors.toList())) {
-                if (Files.isHidden(path) || !Files.isReadable(path) || !Files.isWritable(path)) {
-                    continue;
-                }
-
-                getChildren().add(new FileTreeItem(path));
-            }
+            getChildren().addAll(Files.list(getValue())
+                    .parallel()
+                    .flatMap(path -> {
+                        try {
+                            if (!Files.isHidden(path) && Files.isReadable(path) && Files.isWritable(path)) {
+                                return Stream.of(new FileTreeItem(path));
+                            }
+                        } catch (IOException ignored) {
+                        }
+                        return Stream.empty();
+                    })
+                    .collect(Collectors.toList()));
         } catch (IOException ignored) {
         }
     }
