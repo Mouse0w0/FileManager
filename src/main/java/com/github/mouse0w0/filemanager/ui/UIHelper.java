@@ -8,19 +8,27 @@ import java.nio.charset.StandardCharsets;
 
 public class UIHelper {
 
-    public static void load(Object root, String name) throws IOException {
+    public static void load(Object root, String name) {
         FXMLLoader loader = new FXMLLoader();
         loader.setController(root);
         loader.setRoot(root);
         loader.setCharset(StandardCharsets.UTF_8);
-        loader.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("ui/" + name + ".fxml"));
+        try {
+            loader.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("ui/" + name + ".fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static void load(Object root, URL url) throws IOException {
+    public static void load(Object root, URL url) {
         FXMLLoader loader = new FXMLLoader(url);
         loader.setController(root);
         loader.setRoot(root);
         loader.setCharset(StandardCharsets.UTF_8);
-        loader.load();
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

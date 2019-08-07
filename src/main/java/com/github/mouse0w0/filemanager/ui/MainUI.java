@@ -1,4 +1,11 @@
 package com.github.mouse0w0.filemanager.ui;
 
-public class MainUI {
+import javafx.scene.layout.BorderPane;
+
+public class MainUI extends BorderPane {
+
+    public MainUI() {
+        UIHelper.load(this, "Main");
+        setCenter(new FileExplorerUI());
+    }
 }
