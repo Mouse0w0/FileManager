@@ -8,4 +8,8 @@ public class FileManager {
     public static void main(String[] args) {
         Application.launch(UIBootstrap.class, args);
     }
+
+    public static void shutdown() {
+
+    }
 }

@@ -3,6 +3,7 @@ package com.github.mouse0w0.filemanager.ui.drag;
 import com.github.mouse0w0.filemanager.file.FileReceiver;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.input.TransferMode;
@@ -41,6 +42,11 @@ public class FileDragPane extends BorderPane {
         hBox.setSpacing(5);
         setBottom(hBox);
 
+        Button addTile = new Button("Add Tile");
+        addTile.setOnAction(event -> DragTileAddUI.show(getScene().getWindow()));
+
+        Text transferModeText = new Text("Transfer Mode:");
+
         transferMode.setConverter(new StringConverter<>() {
             @Override
             public String toString(TransferMode object) {
@@ -55,8 +61,7 @@ public class FileDragPane extends BorderPane {
         transferMode.getItems().addAll(TransferMode.COPY, TransferMode.MOVE);
         transferMode.getSelectionModel().select(TransferMode.COPY);
 
-        Text transferModeText = new Text("Transfer Mode:");
-        hBox.getChildren().addAll(transferModeText, transferMode);
+        hBox.getChildren().addAll(addTile, transferModeText, transferMode);
     }
 
     private class Cell extends GridCell<DragTile> {

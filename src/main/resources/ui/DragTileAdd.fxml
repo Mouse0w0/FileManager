@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<fx:root prefWidth="300.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <GridPane hgap="5.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="169.0" minWidth="10.0"
+                                   prefWidth="108.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="177.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:"/>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Icon:" GridPane.rowIndex="1"/>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IconColor:" GridPane.rowIndex="2"/>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="BackgroundColor:" GridPane.rowIndex="3"/>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Receiver:" GridPane.rowIndex="4"/>
+                <TextField prefHeight="23.0" prefWidth="520.0" GridPane.columnIndex="1"/>
+                <ChoiceBox prefHeight="23.0" prefWidth="312.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <ColorPicker prefHeight="23.0" prefWidth="394.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <ColorPicker prefHeight="23.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <ChoiceBox prefHeight="23.0" prefWidth="417.0" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            </children>
+        </GridPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+            <children>
+                <Button mnemonicParsing="false" text="Add"/>
+            </children>
+        </HBox>
+    </bottom>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
+</fx:root>
