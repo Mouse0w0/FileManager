@@ -24,6 +24,11 @@ dependencies {
 
     compile 'com.j256.ormlite:ormlite-jdbc:5.1'
 
+    compile 'eu.hansolo:tilesfx:11.2'
+    compile 'org.controlsfx:controlsfx:11.0.0'
+    compile 'org.kordamp.ikonli:ikonli-javafx:11.3.4'
+    compile 'org.kordamp.ikonli:ikonli-material-pack:11.3.4'
+
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     implementation 'net.sf.jopt-simple:jopt-simple:5.0.4'
     implementation 'org.xerial:sqlite-jdbc:3.27.2.1'
