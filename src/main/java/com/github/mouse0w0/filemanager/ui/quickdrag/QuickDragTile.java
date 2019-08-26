@@ -1,10 +1,10 @@
-package com.github.mouse0w0.filemanager.ui.drag;
+package com.github.mouse0w0.filemanager.ui.quickdrag;
 
 import com.github.mouse0w0.filemanager.file.FileReceiver;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.Ikon;
 
-public class DragTile {
+public class QuickDragTile {
 
     private String name;
     private Ikon icon;
@@ -12,7 +12,7 @@ public class DragTile {
     private Color backGroundColor;
     private FileReceiver receiver;
 
-    public DragTile(String name, Ikon icon, Color iconColor, Color backGroundColor, FileReceiver receiver) {
+    public QuickDragTile(String name, Ikon icon, Color iconColor, Color backGroundColor, FileReceiver receiver) {
         this.name = name;
         this.icon = icon;
         this.iconColor = iconColor;

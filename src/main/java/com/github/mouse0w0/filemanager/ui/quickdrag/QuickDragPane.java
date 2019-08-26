@@ -1,4 +1,4 @@
-package com.github.mouse0w0.filemanager.ui.drag;
+package com.github.mouse0w0.filemanager.ui.quickdrag;
 
 import com.github.mouse0w0.filemanager.file.FileReceiver;
 import javafx.geometry.Insets;
@@ -14,12 +14,12 @@ import org.controlsfx.control.GridCell;
 import org.controlsfx.control.GridView;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-public class FileDragPane extends BorderPane {
+public class QuickDragPane extends BorderPane {
 
-    private final GridView<DragTile> grid = new GridView<>();
+    private final GridView<QuickDragTile> grid = new GridView<>();
     private final ChoiceBox<TransferMode> transferMode = new ChoiceBox<>();
 
-    public FileDragPane() {
+    public QuickDragPane() {
         init();
         initGrid();
         initSetting();
@@ -43,7 +43,7 @@ public class FileDragPane extends BorderPane {
         setBottom(hBox);
 
         Button addTile = new Button("Add Tile");
-        addTile.setOnAction(event -> DragTileAddUI.show(getScene().getWindow()));
+        addTile.setOnAction(event -> QuickDragTileAddUI.show(getScene().getWindow()));
 
         Text transferModeText = new Text("Transfer Mode:");
 
@@ -64,7 +64,7 @@ public class FileDragPane extends BorderPane {
         hBox.getChildren().addAll(addTile, transferModeText, transferMode);
     }
 
-    private class Cell extends GridCell<DragTile> {
+    private class Cell extends GridCell<QuickDragTile> {
 
         public Cell() {
             setAlignment(Pos.CENTER);
@@ -85,7 +85,7 @@ public class FileDragPane extends BorderPane {
         }
 
         @Override
-        protected void updateItem(DragTile item, boolean empty) {
+        protected void updateItem(QuickDragTile item, boolean empty) {
             super.updateItem(item, empty);
 
             if (empty) {

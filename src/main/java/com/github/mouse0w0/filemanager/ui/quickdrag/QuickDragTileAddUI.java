@@ -1,4 +1,4 @@
-package com.github.mouse0w0.filemanager.ui.drag;
+package com.github.mouse0w0.filemanager.ui.quickdrag;
 
 import com.github.mouse0w0.filemanager.ui.UIHelper;
 import javafx.scene.Scene;
@@ -8,10 +8,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
-public class DragTileAddUI extends BorderPane {
+public class QuickDragTileAddUI extends BorderPane {
 
-    public DragTileAddUI() {
-        UIHelper.load(this, "DragTileAdd");
+    public QuickDragTileAddUI() {
+        UIHelper.load(this, "QuickDragTileAdd");
     }
 
     public static void show(Window parent) {
@@ -20,7 +20,7 @@ public class DragTileAddUI extends BorderPane {
         stage.initStyle(StageStyle.UTILITY);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Add Tile");
-        stage.setScene(new Scene(new DragTileAddUI()));
+        stage.setScene(new Scene(new QuickDragTileAddUI()));
         stage.showAndWait();
     }
 }
