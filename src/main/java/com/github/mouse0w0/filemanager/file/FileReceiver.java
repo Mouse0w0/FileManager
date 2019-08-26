@@ -4,5 +4,5 @@ import java.nio.file.Path;
 
 public interface FileReceiver {
 
-    void onReceive(Path path);
+    void onReceive(Path path, boolean copy);
 }

@@ -74,7 +74,8 @@ public class FileDragPane extends BorderPane {
                 if (receiver == null) {
                     return;
                 }
-                event.getDragboard().getFiles().forEach(file -> receiver.onReceive(file.toPath()));
+                boolean copy = transferMode.getSelectionModel().getSelectedItem() == TransferMode.COPY;
+                event.getDragboard().getFiles().forEach(file -> receiver.onReceive(file.toPath(), copy));
             });
         }
 
