@@ -27,6 +27,10 @@ public class Storage {
         return path;
     }
 
+    public String getName() {
+        return settings.name;
+    }
+
     public StorageSettings getSettings() {
         return settings;
     }

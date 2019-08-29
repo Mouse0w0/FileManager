@@ -3,7 +3,6 @@ package com.github.mouse0w0.filemanager.transfer;
 import com.github.mouse0w0.filemanager.storage.Storage;
 import com.github.mouse0w0.filemanager.ui.transfer.FileTransferNormalUI;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonPrimitive;
 import javafx.scene.Parent;
 
 import java.io.IOException;
@@ -11,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static com.github.mouse0w0.filemanager.util.PathUtils.relativize;
+import static com.github.mouse0w0.filemanager.util.json.JsonUtils.json;
 
 public class FileTransferNormal extends FileTransferBase {
 
@@ -23,7 +23,7 @@ public class FileTransferNormal extends FileTransferBase {
 
     @Override
     public JsonElement writeSettings() {
-        return new JsonPrimitive(target);
+        return json(target);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class FileTransferNormal extends FileTransferBase {
 
         @Override
         public JsonElement resolveSettingUI(Storage storage, Parent parent) {
-            return new JsonPrimitive(relativize(storage.getPath(), ((FileTransferNormalUI) parent).path.getText()).toString());
+            return json(relativize(storage.getPath(), ((FileTransferNormalUI) parent).path.getText()).toString());
         }
 
         @Override
