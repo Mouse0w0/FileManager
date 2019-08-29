@@ -25,4 +25,8 @@ public class PathUtils {
             }
         }
     }
+
+    public static Path relativize(Path basePath, String path) {
+        return basePath.relativize(Path.of(path));
+    }
 }

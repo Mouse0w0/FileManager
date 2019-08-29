@@ -42,11 +42,15 @@ public class QuickDragPane extends BorderPane {
         grid.setCellFactory(view -> new Cell());
         grid.setHorizontalCellSpacing(5);
         grid.setVerticalCellSpacing(5);
+        setCenter(grid);
+        refreshQuickDragTile();
+    }
+
+    public void refreshQuickDragTile() {
         QuickDrag quickDrag = storage.getSettings().quickDrag;
         if (quickDrag != null) {
             grid.getItems().addAll(quickDrag.tiles);
         }
-        setCenter(grid);
     }
 
     private void initSetting() {
@@ -88,7 +92,7 @@ public class QuickDragPane extends BorderPane {
                 }
             });
             setOnDragDropped(event -> {
-                FileTransfer receiver = getItem().getReceiver();
+                FileTransfer receiver = getItem().getTransfer();
                 if (receiver == null) {
                     return;
                 }
@@ -96,7 +100,7 @@ public class QuickDragPane extends BorderPane {
                 event.getDragboard().getFiles().forEach(file -> {
                     try {
                         // TODO: Async
-                        receiver.transfer(file.toPath(), copy);
+                        receiver.transfer(storage, file.toPath(), copy);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

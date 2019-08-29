@@ -1,4 +1,4 @@
-package com.github.mouse0w0.filemanager.util;
+package com.github.mouse0w0.filemanager.util.json;
 
 import com.google.gson.*;
 import org.kordamp.ikonli.Ikon;

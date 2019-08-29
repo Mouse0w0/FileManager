@@ -1,4 +1,4 @@
-package com.github.mouse0w0.filemanager.util;
+package com.github.mouse0w0.filemanager.util.json;
 
 import com.google.gson.*;
 import javafx.scene.paint.Color;
@@ -16,6 +16,6 @@ public enum ColorPersistent implements JsonSerializer<Color>, JsonDeserializer<C
 
     @Override
     public Color deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        return Color.web(json.toString());
+        return Color.valueOf(json.getAsString());
     }
 }

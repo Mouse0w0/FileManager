@@ -1,9 +1,9 @@
 package com.github.mouse0w0.filemanager.storage.setting;
 
 import com.github.mouse0w0.filemanager.transfer.FileTransfer;
-import com.github.mouse0w0.filemanager.util.ColorPersistent;
-import com.github.mouse0w0.filemanager.util.FileTransferPersistent;
-import com.github.mouse0w0.filemanager.util.IkonPersistent;
+import com.github.mouse0w0.filemanager.util.json.ColorPersistent;
+import com.github.mouse0w0.filemanager.util.json.FileTransferPersistent;
+import com.github.mouse0w0.filemanager.util.json.IkonPersistent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.scene.paint.Color;
@@ -18,5 +18,5 @@ public class StorageSettings {
             .create();
 
     public String name;
-    public QuickDrag quickDrag;
+    public QuickDrag quickDrag = new QuickDrag();
 }

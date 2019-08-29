@@ -10,23 +10,25 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static com.github.mouse0w0.filemanager.util.PathUtils.relativize;
+
 public class FileTransferNormal extends FileTransferBase {
 
-    private final Path target;
+    private final String target;
 
-    public FileTransferNormal(Factory factory, Path target) {
+    public FileTransferNormal(Factory factory, String target) {
         super(factory);
         this.target = target;
     }
 
     @Override
-    public JsonElement writeSetting(Storage storage) {
-        return new JsonPrimitive(target.relativize(storage.getPath()).toString());
+    public JsonElement writeSettings() {
+        return new JsonPrimitive(target);
     }
 
     @Override
-    public void transfer(Path path, boolean copy) throws IOException {
-        Path target = this.target.resolve(path.getFileName());
+    public void transfer(Storage storage, Path path, boolean copy) throws IOException {
+        Path target = storage.getPath().resolve(this.target).resolve(path.getFileName());
         if (copy) {
             Files.copy(path, target);
         } else {
@@ -50,12 +52,12 @@ public class FileTransferNormal extends FileTransferBase {
 
         @Override
         public JsonElement resolveSettingUI(Storage storage, Parent parent) {
-            return new JsonPrimitive(Path.of(((FileTransferNormalUI) parent).path.getText()).relativize(storage.getPath()).toString());
+            return new JsonPrimitive(relativize(storage.getPath(), ((FileTransferNormalUI) parent).path.getText()).toString());
         }
 
         @Override
-        public FileTransfer create(Storage storage, JsonElement setting) {
-            return new FileTransferNormal(this, storage.getPath().resolve(setting.getAsString()));
+        public FileTransfer create(JsonElement setting) {
+            return new FileTransferNormal(this, setting.getAsString());
         }
     }
 }

@@ -1,26 +1,29 @@
 package com.github.mouse0w0.filemanager.storage.setting;
 
 import com.github.mouse0w0.filemanager.transfer.FileTransfer;
+import com.github.mouse0w0.filemanager.util.json.IkonPersistent;
+import com.google.gson.annotations.JsonAdapter;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.Ikon;
 
 public class QuickDragTile {
 
     private String name;
+    @JsonAdapter(IkonPersistent.class)
     private Ikon icon;
     private Color iconColor;
     private Color backGroundColor;
-    private FileTransfer receiver;
+    private FileTransfer transfer;
 
     public QuickDragTile() {
     }
 
-    public QuickDragTile(String name, Ikon icon, Color iconColor, Color backGroundColor, FileTransfer receiver) {
+    public QuickDragTile(String name, Ikon icon, Color iconColor, Color backGroundColor, FileTransfer transfer) {
         this.name = name;
         this.icon = icon;
         this.iconColor = iconColor;
         this.backGroundColor = backGroundColor;
-        this.receiver = receiver;
+        this.transfer = transfer;
     }
 
     public String getName() {
@@ -55,11 +58,11 @@ public class QuickDragTile {
         this.backGroundColor = backGroundColor;
     }
 
-    public FileTransfer getReceiver() {
-        return receiver;
+    public FileTransfer getTransfer() {
+        return transfer;
     }
 
-    public void setReceiver(FileTransfer receiver) {
-        this.receiver = receiver;
+    public void setTransfer(FileTransfer transfer) {
+        this.transfer = transfer;
     }
 }

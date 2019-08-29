@@ -11,17 +11,18 @@ public interface FileTransfer {
 
     Factory getFactory();
 
-    JsonElement writeSetting(Storage storage);
+    JsonElement writeSettings();
 
-    void transfer(Path path, boolean copy) throws IOException;
+    void transfer(Storage storage, Path path, boolean copy) throws IOException;
 
     interface Factory {
+
         String getName();
+
+        FileTransfer create(JsonElement setting);
 
         Parent createSettingUI(Storage storage, JsonElement setting);
 
         JsonElement resolveSettingUI(Storage storage, Parent parent);
-
-        FileTransfer create(Storage storage, JsonElement setting);
     }
 }
