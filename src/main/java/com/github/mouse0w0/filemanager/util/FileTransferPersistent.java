@@ -1,6 +1,6 @@
 package com.github.mouse0w0.filemanager.util;
 
-import com.github.mouse0w0.filemanager.file.FileTransfer;
+import com.github.mouse0w0.filemanager.transfer.FileTransfer;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

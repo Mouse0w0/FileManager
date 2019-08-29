@@ -34,7 +34,7 @@
                              GridPane.rowIndex="2"/>
                 <ColorPicker fx:id="backgroundColor" prefHeight="23.0" prefWidth="430.0" GridPane.columnIndex="1"
                              GridPane.rowIndex="3"/>
-                <ChoiceBox fx:id="reveiver" prefHeight="23.0" prefWidth="417.0" GridPane.columnIndex="1"
+                <ChoiceBox fx:id="receiver" prefHeight="23.0" prefWidth="417.0" GridPane.columnIndex="1"
                            GridPane.rowIndex="4"/>
                 <Button mnemonicParsing="false" onAction="#editReceiver" prefHeight="23.0" prefWidth="200.0"
                         text="Edit Receiver" GridPane.columnIndex="1" GridPane.rowIndex="5"/>

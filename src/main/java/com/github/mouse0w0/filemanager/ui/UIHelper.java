@@ -1,6 +1,7 @@
 package com.github.mouse0w0.filemanager.ui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -38,13 +39,29 @@ public class UIHelper {
         }
     }
 
+    public static void showUtilityWindow(Node parent, String title, Parent graphics) {
+        showUtilityWindow(parent.getScene().getWindow(), title, graphics);
+    }
+
+
     public static void showUtilityWindow(Window parent, String title, Parent graphics) {
+        showUtilityWindow(parent, title, new Scene(graphics));
+    }
+
+    public static void showUtilityWindow(Window parent, String title, Scene scene) {
         Stage stage = new Stage();
         stage.initOwner(parent);
         stage.initStyle(StageStyle.UTILITY);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle(title);
-        stage.setScene(new Scene(graphics));
+        stage.setScene(scene);
         stage.showAndWait();
+    }
+
+    public static void closeWindow(Node node) {
+        Window window = node.getScene().getWindow();
+        if (window instanceof Stage) {
+            ((Stage) window).close();
+        }
     }
 }

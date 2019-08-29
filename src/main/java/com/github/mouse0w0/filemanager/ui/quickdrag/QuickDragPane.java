@@ -1,7 +1,10 @@
 package com.github.mouse0w0.filemanager.ui.quickdrag;
 
-import com.github.mouse0w0.filemanager.file.FileTransfer;
+import com.github.mouse0w0.filemanager.storage.Storage;
+import com.github.mouse0w0.filemanager.storage.setting.QuickDrag;
 import com.github.mouse0w0.filemanager.storage.setting.QuickDragTile;
+import com.github.mouse0w0.filemanager.transfer.FileTransfer;
+import com.github.mouse0w0.filemanager.ui.UIHelper;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,12 +18,17 @@ import org.controlsfx.control.GridCell;
 import org.controlsfx.control.GridView;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.io.IOException;
+
 public class QuickDragPane extends BorderPane {
 
     private final GridView<QuickDragTile> grid = new GridView<>();
     private final ChoiceBox<TransferMode> transferMode = new ChoiceBox<>();
 
-    public QuickDragPane() {
+    private final Storage storage;
+
+    public QuickDragPane(Storage storage) {
+        this.storage = storage;
         init();
         initGrid();
         initSetting();
@@ -34,6 +42,10 @@ public class QuickDragPane extends BorderPane {
         grid.setCellFactory(view -> new Cell());
         grid.setHorizontalCellSpacing(5);
         grid.setVerticalCellSpacing(5);
+        QuickDrag quickDrag = storage.getSettings().quickDrag;
+        if (quickDrag != null) {
+            grid.getItems().addAll(quickDrag.tiles);
+        }
         setCenter(grid);
     }
 
@@ -44,7 +56,7 @@ public class QuickDragPane extends BorderPane {
         setBottom(hBox);
 
         Button addTile = new Button("Add Tile");
-        addTile.setOnAction(event -> NewQuickDragTileUI.show(getScene().getWindow()));
+        addTile.setOnAction(event -> UIHelper.showUtilityWindow(this, "New Quick Drag Tile", new NewQuickDragTileUI(this, storage)));
 
         Text transferModeText = new Text("Transfer Mode:");
 
@@ -81,7 +93,14 @@ public class QuickDragPane extends BorderPane {
                     return;
                 }
                 boolean copy = transferMode.getSelectionModel().getSelectedItem() == TransferMode.COPY;
-                event.getDragboard().getFiles().forEach(file -> receiver.transfer(file.toPath(), copy));
+                event.getDragboard().getFiles().forEach(file -> {
+                    try {
+                        // TODO: Async
+                        receiver.transfer(file.toPath(), copy);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
             });
         }
 

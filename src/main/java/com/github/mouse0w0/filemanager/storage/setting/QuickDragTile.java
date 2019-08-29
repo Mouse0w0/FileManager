@@ -1,6 +1,6 @@
 package com.github.mouse0w0.filemanager.storage.setting;
 
-import com.github.mouse0w0.filemanager.file.FileTransfer;
+import com.github.mouse0w0.filemanager.transfer.FileTransfer;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.Ikon;
 
