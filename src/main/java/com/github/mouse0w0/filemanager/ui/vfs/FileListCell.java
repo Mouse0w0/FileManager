@@ -1,14 +1,14 @@
 package com.github.mouse0w0.filemanager.ui.vfs;
 
-import javafx.scene.control.TreeCell;
+import javafx.scene.control.ListCell;
 
 import java.nio.file.Path;
 
-public class FileTreeCell extends TreeCell<Path> {
+public class FileListCell extends ListCell<Path> {
 
     private final FileExplorerUI fileExplorer;
 
-    public FileTreeCell(FileExplorerUI fileExplorer) {
+    public FileListCell(FileExplorerUI fileExplorer) {
         this.fileExplorer = fileExplorer;
     }
 

@@ -1,6 +1,7 @@
 package com.github.mouse0w0.filemanager.ui.quickdrag;
 
-import com.github.mouse0w0.filemanager.file.FileReceiver;
+import com.github.mouse0w0.filemanager.file.FileTransfer;
+import com.github.mouse0w0.filemanager.storage.setting.QuickDragTile;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -43,7 +44,7 @@ public class QuickDragPane extends BorderPane {
         setBottom(hBox);
 
         Button addTile = new Button("Add Tile");
-        addTile.setOnAction(event -> QuickDragTileAddUI.show(getScene().getWindow()));
+        addTile.setOnAction(event -> NewQuickDragTileUI.show(getScene().getWindow()));
 
         Text transferModeText = new Text("Transfer Mode:");
 
@@ -75,12 +76,12 @@ public class QuickDragPane extends BorderPane {
                 }
             });
             setOnDragDropped(event -> {
-                FileReceiver receiver = getItem().getReceiver();
+                FileTransfer receiver = getItem().getReceiver();
                 if (receiver == null) {
                     return;
                 }
                 boolean copy = transferMode.getSelectionModel().getSelectedItem() == TransferMode.COPY;
-                event.getDragboard().getFiles().forEach(file -> receiver.onReceive(file.toPath(), copy));
+                event.getDragboard().getFiles().forEach(file -> receiver.transfer(file.toPath(), copy));
             });
         }
 

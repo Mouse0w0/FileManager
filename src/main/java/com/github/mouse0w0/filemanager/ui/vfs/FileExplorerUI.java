@@ -1,7 +1,6 @@
-package com.github.mouse0w0.filemanager.ui;
+package com.github.mouse0w0.filemanager.ui.vfs;
 
-import com.github.mouse0w0.filemanager.ui.vfs.FileTreeCell;
-import com.github.mouse0w0.filemanager.ui.vfs.FileTreeItem;
+import com.github.mouse0w0.filemanager.ui.UIHelper;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -23,10 +22,17 @@ public class FileExplorerUI extends SplitPane {
 
     public FileExplorerUI() {
         UIHelper.load(this, "FileExplorer");
-        tree.setCellFactory(param -> new FileTreeCell());
+
+        tree.setCellFactory(param -> new FileTreeCell(this));
         tree.setShowRoot(false);
         root = new TreeItem<>();
         tree.setRoot(root);
         FileSystems.getDefault().getRootDirectories().forEach(path -> root.getChildren().add(new FileTreeItem(path)));
+
+        list.setCellFactory(param -> new FileListCell(this));
+    }
+
+    public void showPathInList(Path path) {
+
     }
 }

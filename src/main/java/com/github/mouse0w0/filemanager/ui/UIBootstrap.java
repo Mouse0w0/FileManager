@@ -16,7 +16,7 @@ public class UIBootstrap extends Application {
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
-        primaryStage.setScene(new Scene(new MainUI()));
+        primaryStage.setScene(new Scene(new MainUI(primaryStage)));
         primaryStage.setTitle("File Manager");
         primaryStage.show();
         primaryStage.setOnCloseRequest(event -> FileManager.shutdown());

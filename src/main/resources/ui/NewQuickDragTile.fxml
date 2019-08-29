@@ -19,6 +19,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:"/>
@@ -26,18 +27,24 @@
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IconColor:" GridPane.rowIndex="2"/>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="BackgroundColor:" GridPane.rowIndex="3"/>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Receiver:" GridPane.rowIndex="4"/>
-                <TextField prefHeight="23.0" prefWidth="520.0" GridPane.columnIndex="1"/>
-                <ChoiceBox prefHeight="23.0" prefWidth="312.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <ColorPicker prefHeight="23.0" prefWidth="394.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                <ColorPicker prefHeight="23.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                <ChoiceBox prefHeight="23.0" prefWidth="417.0" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <TextField fx:id="name" prefHeight="23.0" prefWidth="520.0" GridPane.columnIndex="1"/>
+                <ComboBox fx:id="icon" prefHeight="23.0" prefWidth="312.0" GridPane.columnIndex="1"
+                          GridPane.rowIndex="1"/>
+                <ColorPicker fx:id="iconColor" prefHeight="23.0" prefWidth="394.0" GridPane.columnIndex="1"
+                             GridPane.rowIndex="2"/>
+                <ColorPicker fx:id="backgroundColor" prefHeight="23.0" prefWidth="430.0" GridPane.columnIndex="1"
+                             GridPane.rowIndex="3"/>
+                <ChoiceBox fx:id="reveiver" prefHeight="23.0" prefWidth="417.0" GridPane.columnIndex="1"
+                           GridPane.rowIndex="4"/>
+                <Button mnemonicParsing="false" onAction="#editReceiver" prefHeight="23.0" prefWidth="200.0"
+                        text="Edit Receiver" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
             </children>
         </GridPane>
     </center>
     <bottom>
         <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" text="Add"/>
+                <Button mnemonicParsing="false" onAction="#add" text="Add"/>
             </children>
         </HBox>
     </bottom>

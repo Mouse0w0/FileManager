@@ -1,6 +1,6 @@
-package com.github.mouse0w0.filemanager.ui.quickdrag;
+package com.github.mouse0w0.filemanager.storage.setting;
 
-import com.github.mouse0w0.filemanager.file.FileReceiver;
+import com.github.mouse0w0.filemanager.file.FileTransfer;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.Ikon;
 
@@ -10,9 +10,12 @@ public class QuickDragTile {
     private Ikon icon;
     private Color iconColor;
     private Color backGroundColor;
-    private FileReceiver receiver;
+    private FileTransfer receiver;
 
-    public QuickDragTile(String name, Ikon icon, Color iconColor, Color backGroundColor, FileReceiver receiver) {
+    public QuickDragTile() {
+    }
+
+    public QuickDragTile(String name, Ikon icon, Color iconColor, Color backGroundColor, FileTransfer receiver) {
         this.name = name;
         this.icon = icon;
         this.iconColor = iconColor;
@@ -52,11 +55,11 @@ public class QuickDragTile {
         this.backGroundColor = backGroundColor;
     }
 
-    public FileReceiver getReceiver() {
+    public FileTransfer getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(FileReceiver receiver) {
+    public void setReceiver(FileTransfer receiver) {
         this.receiver = receiver;
     }
 }
