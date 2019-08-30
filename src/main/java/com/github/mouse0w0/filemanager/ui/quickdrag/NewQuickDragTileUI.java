@@ -20,7 +20,11 @@ import org.kordamp.ikonli.Ikon;
 import org.kordamp.ikonli.javafx.IkonResolver;
 import org.kordamp.ikonli.material.Material;
 
+import java.util.Random;
+
 public class NewQuickDragTileUI extends BorderPane {
+
+    private static final Random RANDOM = new Random();
 
     private final QuickDragPane parent;
     private final Storage storage;
@@ -43,7 +47,7 @@ public class NewQuickDragTileUI extends BorderPane {
         this.storage = storage;
         UIHelper.load(this, "NewQuickDragTile");
         iconColor.setValue(Color.BLACK);
-        backgroundColor.setValue(Color.TRANSPARENT);
+        backgroundColor.setValue(Color.rgb(RANDOM.nextInt(256), RANDOM.nextInt(256), RANDOM.nextInt(256)));
         icon.setConverter(new StringConverter<>() {
             @Override
             public String toString(Ikon object) {
