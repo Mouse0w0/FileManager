@@ -2,7 +2,6 @@ package com.github.mouse0w0.filemanager.ui.quickdrag;
 
 import com.github.mouse0w0.filemanager.storage.Storage;
 import com.github.mouse0w0.filemanager.storage.setting.QuickDrag;
-import com.github.mouse0w0.filemanager.storage.setting.QuickDrags;
 import com.github.mouse0w0.filemanager.transfer.FileTransfer;
 import com.github.mouse0w0.filemanager.ui.UIHelper;
 import javafx.geometry.Insets;
@@ -47,10 +46,7 @@ public class QuickDragPane extends BorderPane {
     }
 
     public void refreshQuickDragTile() {
-        QuickDrags quickDrags = storage.getSettings().quickDrags;
-        if (quickDrags != null) {
-            grid.getItems().addAll(quickDrags.quickDrag);
-        }
+        grid.getItems().addAll(storage.getSettings().getQuickDrags());
     }
 
     private void initSetting() {

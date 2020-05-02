@@ -9,6 +9,9 @@ import com.google.gson.GsonBuilder;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.Ikon;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StorageSettings {
 
     public static final Gson GSON = new GsonBuilder()
@@ -17,6 +20,18 @@ public class StorageSettings {
             .registerTypeAdapter(FileTransfer.class, FileTransferPersistent.INSTANCE)
             .create();
 
-    public String name;
-    public QuickDrags quickDrags = new QuickDrags();
+    private String name;
+    private List<QuickDrag> quickDrags = new ArrayList<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<QuickDrag> getQuickDrags() {
+        return quickDrags;
+    }
 }

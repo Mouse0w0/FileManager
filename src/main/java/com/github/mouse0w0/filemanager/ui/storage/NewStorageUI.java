@@ -38,7 +38,7 @@ public class NewStorageUI extends BorderPane {
     @FXML
     public void newStorage() {
         Storage storage = new Storage(Path.of(path.getText()));
-        storage.getSettings().name = name.getText();
+        storage.getSettings().setName(name.getText());
         storage.saveSettings();
         UIHelper.closeWindow(this);
         parent.openStorage(storage);

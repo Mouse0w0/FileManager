@@ -73,7 +73,7 @@ public class NewQuickDragTileUI extends BorderPane {
 
         var tile = new QuickDrag(name.getText(), icon.getValue(),
                 iconColor.getValue(), backgroundColor.getValue(), factory.create(receiverSetting));
-        storage.getSettings().quickDrags.quickDrag.add(tile);
+        storage.getSettings().getQuickDrags().add(tile);
         storage.saveSettings();
         parent.refreshQuickDragTile();
         UIHelper.closeWindow(this);

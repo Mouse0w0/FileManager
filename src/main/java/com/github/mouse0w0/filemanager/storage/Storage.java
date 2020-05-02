@@ -30,7 +30,7 @@ public class Storage {
     }
 
     public String getName() {
-        return settings.name;
+        return settings.getName();
     }
 
     public StorageSettings getSettings() {
