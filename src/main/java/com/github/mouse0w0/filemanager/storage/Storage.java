@@ -11,15 +11,17 @@ import static com.github.mouse0w0.filemanager.util.PathUtils.createFileIfNotExis
 
 public class Storage {
 
+    public static final String SETTINGS_FILE = "Settings.json";
+
     private final Path path;
-    private final Path settingsPath;
+    private final Path dataPath;
 
     private StorageSettings settings;
 
     public Storage(Path path) {
         this.path = path;
-        createDirectoriesIfNotExists(path);
-        this.settingsPath = path.resolve("storage.settings.json");
+        this.dataPath = path.resolve(".storage");
+        createDirectoriesIfNotExists(this.dataPath);
         loadSettings();
     }
 
@@ -36,8 +38,9 @@ public class Storage {
     }
 
     public void loadSettings() {
-        createFileIfNotExists(settingsPath);
-        try (var reader = Files.newBufferedReader(settingsPath)) {
+        Path settingsFile = dataPath.resolve(SETTINGS_FILE);
+        createFileIfNotExists(settingsFile);
+        try (var reader = Files.newBufferedReader(settingsFile)) {
             settings = StorageSettings.GSON.fromJson(reader, StorageSettings.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -49,8 +52,9 @@ public class Storage {
     }
 
     public void saveSettings() {
-        createFileIfNotExists(settingsPath);
-        try (var writer = Files.newBufferedWriter(settingsPath)) {
+        Path settingsFile = dataPath.resolve(SETTINGS_FILE);
+        createFileIfNotExists(settingsFile);
+        try (var writer = Files.newBufferedWriter(settingsFile)) {
             StorageSettings.GSON.toJson(settings, writer);
         } catch (IOException e) {
             throw new RuntimeException(e);
