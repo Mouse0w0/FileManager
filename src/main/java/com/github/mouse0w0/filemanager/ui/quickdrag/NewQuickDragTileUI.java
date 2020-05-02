@@ -1,7 +1,7 @@
 package com.github.mouse0w0.filemanager.ui.quickdrag;
 
 import com.github.mouse0w0.filemanager.storage.Storage;
-import com.github.mouse0w0.filemanager.storage.setting.QuickDragTile;
+import com.github.mouse0w0.filemanager.storage.setting.QuickDrag;
 import com.github.mouse0w0.filemanager.transfer.FileTransfer;
 import com.github.mouse0w0.filemanager.transfer.FileTransfers;
 import com.github.mouse0w0.filemanager.ui.UIHelper;
@@ -71,9 +71,9 @@ public class NewQuickDragTileUI extends BorderPane {
             return;
         }
 
-        var tile = new QuickDragTile(name.getText(), icon.getValue(),
+        var tile = new QuickDrag(name.getText(), icon.getValue(),
                 iconColor.getValue(), backgroundColor.getValue(), factory.create(receiverSetting));
-        storage.getSettings().quickDrag.tiles.add(tile);
+        storage.getSettings().quickDrags.quickDrag.add(tile);
         storage.saveSettings();
         parent.refreshQuickDragTile();
         UIHelper.closeWindow(this);

@@ -2,7 +2,7 @@ package com.github.mouse0w0.filemanager.ui.quickdrag;
 
 import com.github.mouse0w0.filemanager.storage.Storage;
 import com.github.mouse0w0.filemanager.storage.setting.QuickDrag;
-import com.github.mouse0w0.filemanager.storage.setting.QuickDragTile;
+import com.github.mouse0w0.filemanager.storage.setting.QuickDrags;
 import com.github.mouse0w0.filemanager.transfer.FileTransfer;
 import com.github.mouse0w0.filemanager.ui.UIHelper;
 import javafx.geometry.Insets;
@@ -22,7 +22,7 @@ import java.io.IOException;
 
 public class QuickDragPane extends BorderPane {
 
-    private final GridView<QuickDragTile> grid = new GridView<>();
+    private final GridView<QuickDrag> grid = new GridView<>();
     private final ChoiceBox<TransferMode> transferMode = new ChoiceBox<>();
 
     private final Storage storage;
@@ -47,9 +47,9 @@ public class QuickDragPane extends BorderPane {
     }
 
     public void refreshQuickDragTile() {
-        QuickDrag quickDrag = storage.getSettings().quickDrag;
-        if (quickDrag != null) {
-            grid.getItems().addAll(quickDrag.tiles);
+        QuickDrags quickDrags = storage.getSettings().quickDrags;
+        if (quickDrags != null) {
+            grid.getItems().addAll(quickDrags.quickDrag);
         }
     }
 
@@ -81,7 +81,7 @@ public class QuickDragPane extends BorderPane {
         hBox.getChildren().addAll(addTile, transferModeText, transferMode);
     }
 
-    private class Cell extends GridCell<QuickDragTile> {
+    private class Cell extends GridCell<QuickDrag> {
 
         public Cell() {
             setAlignment(Pos.CENTER);
@@ -109,7 +109,7 @@ public class QuickDragPane extends BorderPane {
         }
 
         @Override
-        protected void updateItem(QuickDragTile item, boolean empty) {
+        protected void updateItem(QuickDrag item, boolean empty) {
             super.updateItem(item, empty);
 
             if (empty) {
@@ -118,7 +118,9 @@ public class QuickDragPane extends BorderPane {
                 setBackground(null);
             } else {
                 setText(item.getName());
-                setGraphic(FontIcon.of(item.getIcon(), 32, item.getIconColor()));
+                if (item.getIcon() != null) {
+                    setGraphic(FontIcon.of(item.getIcon(), 32, item.getIconColor()));
+                }
                 setBackground(new Background(new BackgroundFill(item.getBackGroundColor(), new CornerRadii(5), null)));
             }
         }

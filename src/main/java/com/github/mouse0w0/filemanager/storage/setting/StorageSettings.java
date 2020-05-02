@@ -18,5 +18,5 @@ public class StorageSettings {
             .create();
 
     public String name;
-    public QuickDrag quickDrag = new QuickDrag();
+    public QuickDrags quickDrags = new QuickDrags();
 }
