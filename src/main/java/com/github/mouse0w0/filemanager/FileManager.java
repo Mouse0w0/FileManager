@@ -6,6 +6,7 @@ import javafx.application.Application;
 public class FileManager {
 
     public static void main(String[] args) {
+        UserSettings.init();
         Application.launch(UIBootstrap.class, args);
     }
 

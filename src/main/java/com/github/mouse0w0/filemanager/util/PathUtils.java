@@ -17,6 +17,7 @@ public class PathUtils {
     }
 
     public static void createFileIfNotExists(Path path) {
+        createDirectoriesIfNotExists(path.getParent());
         if (!Files.exists(path)) {
             try {
                 Files.createFile(path);

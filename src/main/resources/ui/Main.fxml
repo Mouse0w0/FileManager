@@ -8,11 +8,11 @@
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" onShowing="#onShowingFileMenu" text="File">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#newStorage" text="New Storage"/>
-                        <MenuItem mnemonicParsing="false" onAction="#openStorage" text="Open Storage"/>
-                        <Menu mnemonicParsing="false" text="Open Recent"/>
+                        <MenuItem mnemonicParsing="false" onAction="#openStorage" text="Open..."/>
+                        <Menu fx:id="openRecent" mnemonicParsing="false" text="Open Recent"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="View">
