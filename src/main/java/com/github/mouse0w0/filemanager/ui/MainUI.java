@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
-import java.nio.file.Path;
+import java.io.File;
 
 public class MainUI extends BorderPane {
 
@@ -35,10 +35,9 @@ public class MainUI extends BorderPane {
     public void openStorage() {
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Choose Storage Directory");
-        Path path = chooser.showDialog(getScene().getWindow()).toPath();
-        if (path != null) {
-            openStorage(new Storage(path));
-        }
+        File file = chooser.showDialog(getScene().getWindow());
+        if (file == null) return;
+        openStorage(new Storage(file.toPath()));
     }
 
     public Storage getStorage() {
