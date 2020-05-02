@@ -11,7 +11,7 @@ import static com.github.mouse0w0.filemanager.util.PathUtils.createFileIfNotExis
 
 public class Storage {
 
-    public static final String SETTINGS_FILE = "Settings.json";
+    public static final String SETTINGS_FILE = "settings.json";
 
     private final Path path;
     private final Path dataPath;
